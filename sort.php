@@ -25,9 +25,49 @@ if (empty($numbers)){
     $nbrResult = $nbrARRAY;
 }
 
+// Palindrom
+// code JS
+// if(str.length === 1) {
+//     return true;
+// }
+// else if(str.length === 2) {
+//     return str[0] === str[1];
+// }
+// else if(str[0] === str.slice(-1)) {
+//     return isPalindrome(str.slice(1,-1))
+// }
+// else {
+//     return false;
+// }
 
+if (empty($palindrom)){
+    $pldResult = "word is required";
+}else {
+    if (isPalindrom($palindrom)){
+        $pldResult = "Palindrom word";
+    }
+    else {
+        $pldResult = "Not a palindrom word";
+    }
+}
 
+function isPalindrom($pal) {
+    $len = strlen($pal);
+    if ($len == 1){
+        return TRUE;
+    }
+    else if ($len == 2){
+        if ($pal[0] == $pal[1]){
+            return TRUE;
+        }else {
+            return FALSE;
+        }
+    }
+    else if ($pal[0] == $pal[-1]) {
+        return isPalindrom(substr($pal,1,-1));
+    }
+    else return FALSE;
+}
 
-
-echo json_encode( $nbrResult);
+echo json_encode( $pldResult);
 ?>
